@@ -1,216 +1,125 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="robots" content="index, follow">
-  <title>SofortJob24 – Jobs in deiner Nähe</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SofortJob24 – Mikrojobs in deiner Nähe</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
       margin: 0;
       padding: 0;
+      background-color: #f2f2f2;
     }
     header {
-      background-color: #007bff;
+      background-color: #1e90ff;
       color: white;
-      padding: 1em;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    h1 {
+      font-size: 22px;
+      margin: 0;
+    }
+    #clock {
+      font-size: 18px;
+      margin-left: auto;
+    }
+    .subtext {
       text-align: center;
+      font-size: 16px;
+      margin: 15px;
+      color: #333;
     }
-    #admin-login {
-      position: absolute;
-      top: 10px;
-      left: 10px;
+    .login-box {
+      text-align: center;
+      margin: 20px;
     }
-    #admin-form input {
-      padding: 5px;
-      font-size: 14px;
+    .login-box input {
+      padding: 8px;
+      margin: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
     }
-    .container {
-      padding: 2em;
+    .login-box button {
+      padding: 8px 16px;
+      background-color: #1e90ff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
-    .job-card {
-      background: white;
+    #map {
+      height: 400px;
+      width: 90%;
+      margin: 20px auto;
+      border: 2px solid #1e90ff;
       border-radius: 8px;
-      padding: 1em;
-      margin-bottom: 1em;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .hidden {
-      display: none;
     }
   </style>
 </head>
 <body>
-  <div id="admin-login">
-    <form id="admin-form" onsubmit="return checkCode();">
-      <input type="password" id="admin-code" placeholder="Admin Code eingeben" />
-      <input type="submit" value="Login" />
-    </form>
-  </div>
 
-  <header>
-    <h1>SofortJob24 – Schnell Geld verdienen oder Hilfe finden</h1>
-  </header>
+<header>
+  <h1>SofortJob24 – Mikrojobs in deiner Nähe</h1>
+  <div id="clock"></div>
+</header>
 
-  <div class="container">
-    <div class="job-card">
-      <h3>Ich brauche heute Hilfe beim Umzug</h3>
-      <p>Ort: Berlin</p>
-      <p>Zeit: Heute um 17:00 Uhr</p>
-      <p>Bezahlung: 40€ bar</p>
-    </div>
-
-    <div class="job-card">
-      <h3>Ich mache alles – brauche heute dringend 20€</h3>
-      <p>Ort: Köln</p>
-      <p>Zeit: Flexibel</p>
-      <p>Kontakt nur für registrierte Benutzer</p>
-    </div>
-
-    <div id="admin-content" class="hidden">
-      <hr />
-      <h2>Admin-Bereich</h2>
-      <p>Kontakt: sofortjob24@support.de</p>
-      <p>Telefon: +49 123 456789</p>
-      <p>Verfügbare Dienste: 24/7</p>
-    </div>
-  </div>
-
-  <script>
-    function checkCode() {
-      const code = document.getElementById("admin-code").value;
-      if (code === "74254") {
-        document.getElementById("admin-content").classList.remove("hidden");
-        alert("Admin-Zugang erfolgreich aktiviert.");
-      } else {
-        alert("Falscher Code.");
-      }
-      return false;
-    }
-  </script>
-<style>
-  #neuerJobForm, #investorKontakt {
-    background-color: #f4f4f4;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 10px;
-  }
-
-  #neuerJobForm input, #neuerJobForm textarea,
-  #investorKontakt input, #investorKontakt textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 1em;
-  }
-
-  #neuerJobForm button, #investorKontakt button {
-    margin-top: 15px;
-    width: 100%;
-    padding: 12px;
-    background-color: #0055aa;
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-
-  #neuerJobForm button:hover, #investorKontakt button:hover {
-    background-color: #003366;
-  }
-
-  .successMessage {
-    color: green;
-    font-weight: bold;
-    margin-top: 10px;
-  }
-</style>
-
-<!-- 📍 GPS & Oglas formular -->
-<div id="neuerJobForm">
-  <h3>📢 Inserat erstellen (Job oder Hilfe)</h3>
-  <input type="text" id="titel" placeholder="Was brauchst du oder bietest du?">
-  <textarea id="beschreibung" placeholder="Beschreibe es kurz..."></textarea>
-  <select id="ort">
-    <option value="">Wähle einen Ort</option>
-    <option>Berlin</option>
-    <option>Köln</option>
-    <option>München</option>
-    <option>Frankfurt</option>
-    <option>GPS-Standort verwenden</option>
-  </select>
-  <button onclick="sendeJob()">📝 Inserat posten</button>
-  <div class="successMessage" id="meldungJob" style="display:none;">✅ Inserat gespeichert!</div>
+<div class="subtext">
+  <strong>Für alle, die dringend Hilfe brauchen und für alle, die dringend Geld verdienen müssen.</strong>
 </div>
 
-<!-- 💼 Kontakt für Investoren -->
-<div id="investorKontakt">
-  <h3>📨 Kontakt für Investoren & Werbepartner</h3>
-  <input type="text" id="firmenname" placeholder="Ihr Firmenname">
-  <input type="email" id="kontaktmail" placeholder="Ihre E-Mail-Adresse">
-  <textarea id="nachricht" placeholder="Ihre Nachricht an uns..."></textarea>
-  <button onclick="sendeKontakt()">Kontakt senden</button>
-  <div class="successMessage" id="kontaktErfolg" style="display:none;">✅ Nachricht gesendet!</div>
+<div class="login-box">
+  <h3>Admin Zugang</h3>
+  <input type="password" id="adminCode" placeholder="Admin-Code">
+  <input type="email" id="emailInput" placeholder="E-Mail-Adresse">
+  <button onclick="checkAccess()">Einloggen</button>
+  <p id="loginMessage" style="color:red; margin-top:10px;"></p>
 </div>
+
+<div id="map"></div>
 
 <script>
-  function sendeJob() {
-    const titel = document.getElementById("titel").value;
-    const beschreibung = document.getElementById("beschreibung").value;
-    let ort = document.getElementById("ort").value;
+  function updateClock() {
+    const now = new Date();
+    document.getElementById('clock').innerText =
+      now.toLocaleTimeString('de-DE');
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
 
-    if (ort === "GPS-Standort verwenden") {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          ort = `Standort: ${position.coords.latitude.toFixed(2)}, ${position.coords.longitude.toFixed(2)}`;
-          zeigeErfolgJob(titel, beschreibung, ort);
-        }, function() {
-          alert("GPS konnte nicht geladen werden.");
-        });
-      } else {
-        alert("GPS wird von diesem Gerät nicht unterstützt.");
-      }
+  function checkAccess() {
+    const code = document.getElementById('adminCode').value;
+    const email = document.getElementById('emailInput').value;
+    const validCode = "74254";
+    const validEmail = "drmiha74@web.de";
+    if (code === validCode || email === validEmail) {
+      window.location.href = "admin.html"; // zamijeni s pravom admin stranicom
     } else {
-      zeigeErfolgJob(titel, beschreibung, ort);
+      document.getElementById('loginMessage').innerText = "Falscher Code oder E-Mail-Adresse!";
     }
   }
 
-  function zeigeErfolgJob(titel, beschreibung, ort) {
-    console.log("📢 NEUER JOB:", { titel, beschreibung, ort });
-    document.getElementById("meldungJob").style.display = "block";
-    setTimeout(() => {
-      document.getElementById("meldungJob").style.display = "none";
-      document.getElementById("titel").value = "";
-      document.getElementById("beschreibung").value = "";
-      document.getElementById("ort").value = "";
-    }, 2000);
-  }
-
-  function sendeKontakt() {
-    const firma = document.getElementById("firmenname").value;
-    const mail = document.getElementById("kontaktmail").value;
-    const nachricht = document.getElementById("nachricht").value;
-
-    const emailVerdeckt = "drmiha74[at]web[dot]de"; // skriveni prikaz
-
-    console.log("📨 NEUE KONTAKTANFRAGE:", {
-      firma, mail, nachricht,
-      an: emailVerdeckt
+  function initMap() {
+    const center = { lat: 48.1351, lng: 11.5820 }; // München kao početna lokacija
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 12,
+      center: center,
     });
-
-    document.getElementById("kontaktErfolg").style.display = "block";
-    setTimeout(() => {
-      document.getElementById("kontaktErfolg").style.display = "none";
-      document.getElementById("firmenname").value = "";
-      document.getElementById("kontaktmail").value = "";
-      document.getElementById("nachricht").value = "";
-    }, 2000);
+    new google.maps.Marker({
+      position: center,
+      map: map,
+    });
   }
 </script>
+
+<!-- GOOGLE MAPS API KEY OVDJE -->
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=DEIN_API_SCHLÜSSEL&callback=initMap">
+</script>
+
 </body>
 </html>
