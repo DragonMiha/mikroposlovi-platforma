@@ -90,5 +90,127 @@
       return false;
     }
   </script>
+<style>
+  #neuerJobForm, #investorKontakt {
+    background-color: #f4f4f4;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+  }
+
+  #neuerJobForm input, #neuerJobForm textarea,
+  #investorKontakt input, #investorKontakt textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+  }
+
+  #neuerJobForm button, #investorKontakt button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    background-color: #0055aa;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  #neuerJobForm button:hover, #investorKontakt button:hover {
+    background-color: #003366;
+  }
+
+  .successMessage {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+</style>
+
+<!-- 📍 GPS & Oglas formular -->
+<div id="neuerJobForm">
+  <h3>📢 Inserat erstellen (Job oder Hilfe)</h3>
+  <input type="text" id="titel" placeholder="Was brauchst du oder bietest du?">
+  <textarea id="beschreibung" placeholder="Beschreibe es kurz..."></textarea>
+  <select id="ort">
+    <option value="">Wähle einen Ort</option>
+    <option>Berlin</option>
+    <option>Köln</option>
+    <option>München</option>
+    <option>Frankfurt</option>
+    <option>GPS-Standort verwenden</option>
+  </select>
+  <button onclick="sendeJob()">📝 Inserat posten</button>
+  <div class="successMessage" id="meldungJob" style="display:none;">✅ Inserat gespeichert!</div>
+</div>
+
+<!-- 💼 Kontakt für Investoren -->
+<div id="investorKontakt">
+  <h3>📨 Kontakt für Investoren & Werbepartner</h3>
+  <input type="text" id="firmenname" placeholder="Ihr Firmenname">
+  <input type="email" id="kontaktmail" placeholder="Ihre E-Mail-Adresse">
+  <textarea id="nachricht" placeholder="Ihre Nachricht an uns..."></textarea>
+  <button onclick="sendeKontakt()">Kontakt senden</button>
+  <div class="successMessage" id="kontaktErfolg" style="display:none;">✅ Nachricht gesendet!</div>
+</div>
+
+<script>
+  function sendeJob() {
+    const titel = document.getElementById("titel").value;
+    const beschreibung = document.getElementById("beschreibung").value;
+    let ort = document.getElementById("ort").value;
+
+    if (ort === "GPS-Standort verwenden") {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          ort = `Standort: ${position.coords.latitude.toFixed(2)}, ${position.coords.longitude.toFixed(2)}`;
+          zeigeErfolgJob(titel, beschreibung, ort);
+        }, function() {
+          alert("GPS konnte nicht geladen werden.");
+        });
+      } else {
+        alert("GPS wird von diesem Gerät nicht unterstützt.");
+      }
+    } else {
+      zeigeErfolgJob(titel, beschreibung, ort);
+    }
+  }
+
+  function zeigeErfolgJob(titel, beschreibung, ort) {
+    console.log("📢 NEUER JOB:", { titel, beschreibung, ort });
+    document.getElementById("meldungJob").style.display = "block";
+    setTimeout(() => {
+      document.getElementById("meldungJob").style.display = "none";
+      document.getElementById("titel").value = "";
+      document.getElementById("beschreibung").value = "";
+      document.getElementById("ort").value = "";
+    }, 2000);
+  }
+
+  function sendeKontakt() {
+    const firma = document.getElementById("firmenname").value;
+    const mail = document.getElementById("kontaktmail").value;
+    const nachricht = document.getElementById("nachricht").value;
+
+    const emailVerdeckt = "drmiha74[at]web[dot]de"; // skriveni prikaz
+
+    console.log("📨 NEUE KONTAKTANFRAGE:", {
+      firma, mail, nachricht,
+      an: emailVerdeckt
+    });
+
+    document.getElementById("kontaktErfolg").style.display = "block";
+    setTimeout(() => {
+      document.getElementById("kontaktErfolg").style.display = "none";
+      document.getElementById("firmenname").value = "";
+      document.getElementById("kontaktmail").value = "";
+      document.getElementById("nachricht").value = "";
+    }, 2000);
+  }
+</script>
 </body>
 </html>
