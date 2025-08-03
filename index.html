@@ -1,53 +1,94 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MikroPoslovi - SofortJob24</title>
-    <meta name="description" content="Finde oder biete Sofortjobs in deiner Nähe – schnell, einfach und sicher bezahlt.">
-    <link rel="stylesheet" href="style.css" />
-    <script defer src="app.js"></script>
-    <style>
-      .watch-face {
-        position: absolute;
-        top: 40%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-family: Arial, sans-serif;
-        font-size: 20px;
-        font-weight: bold;
-        color: #000000;
-        background-color: #ffffffbb;
-        padding: 8px 12px;
-        border-radius: 8px;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-        z-index: 10;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="index, follow">
+  <title>SofortJob24 – Jobs in deiner Nähe</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #007bff;
+      color: white;
+      padding: 1em;
+      text-align: center;
+    }
+    #admin-login {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+    #admin-form input {
+      padding: 5px;
+      font-size: 14px;
+    }
+    .container {
+      padding: 2em;
+    }
+    .job-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1em;
+      margin-bottom: 1em;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="admin-login">
+    <form id="admin-form" onsubmit="return checkCode();">
+      <input type="password" id="admin-code" placeholder="Admin Code eingeben" />
+      <input type="submit" value="Login" />
+    </form>
+  </div>
+
+  <header>
+    <h1>SofortJob24 – Schnell Geld verdienen oder Hilfe finden</h1>
+  </header>
+
+  <div class="container">
+    <div class="job-card">
+      <h3>Ich brauche heute Hilfe beim Umzug</h3>
+      <p>Ort: Berlin</p>
+      <p>Zeit: Heute um 17:00 Uhr</p>
+      <p>Bezahlung: 40€ bar</p>
+    </div>
+
+    <div class="job-card">
+      <h3>Ich mache alles – brauche heute dringend 20€</h3>
+      <p>Ort: Köln</p>
+      <p>Zeit: Flexibel</p>
+      <p>Kontakt nur für registrierte Benutzer</p>
+    </div>
+
+    <div id="admin-content" class="hidden">
+      <hr />
+      <h2>Admin-Bereich</h2>
+      <p>Kontakt: sofortjob24@support.de</p>
+      <p>Telefon: +49 123 456789</p>
+      <p>Verfügbare Dienste: 24/7</p>
+    </div>
+  </div>
+
+  <script>
+    function checkCode() {
+      const code = document.getElementById("admin-code").value;
+      if (code === "74254") {
+        document.getElementById("admin-content").classList.remove("hidden");
+        alert("Admin-Zugang erfolgreich aktiviert.");
+      } else {
+        alert("Falscher Code.");
       }
-    </style>
-  </head>
-  <body>
-    <header>
-      <h1>MikroPoslovi – SofortJob24</h1>
-      <p>Finde oder biete kurzfristige Jobs in deiner Nähe</p>
-    </header>
-
-    <!-- Dodani sat -->
-    <div class="watch-face">11:55</div>
-
-    <main>
-      <section>
-        <h2>Arbeiten in der Nähe</h2>
-        <p>Finde spontane Jobs in deiner Umgebung – heute erledigen, heute bezahlt!</p>
-      </section>
-
-      <section>
-        <h2>Schnelle Hilfe gesucht?</h2>
-        <p>Poste deinen Auftrag, und jemand in der Nähe hilft dir sofort.</p>
-      </section>
-    </main>
-
-    <footer>
-      <p>&copy; 2025 SofortJob24. Alle Rechte vorbehalten.</p>
-    </footer>
-  </body>
+      return false;
+    }
+  </script>
+</body>
 </html>
