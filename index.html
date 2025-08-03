@@ -3,92 +3,122 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="robots" content="index, follow">
-  <title>SofortJob24 – Jobs in deiner Nähe</title>
+  <meta name="description" content="SofortJob24 – Verdienen Sie sofort Geld in Ihrer Nähe mit kleinen Jobs.">
+  <meta name="keywords" content="SofortJob, Minijob, Nebenjob, Geld verdienen, Jobs in der Nähe">
+  <meta name="author" content="SofortJob24 Team">
+  <title>SofortJob24 – Schnelle Jobs in deiner Nähe</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+      font-family: 'Roboto', sans-serif;
       margin: 0;
       padding: 0;
+      background-color: #f8f9fa;
     }
     header {
-      background-color: #007bff;
+      background-color: #1a1a1a;
       color: white;
-      padding: 1em;
+      padding: 20px;
       text-align: center;
     }
-    #admin-login {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-    }
-    #admin-form input {
-      padding: 5px;
-      font-size: 14px;
-    }
     .container {
-      padding: 2em;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
     }
-    .job-card {
-      background: white;
+    h1, h2 {
+      color: #1a1a1a;
+    }
+    .job-box {
+      background-color: white;
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin: 15px 0;
       border-radius: 8px;
-      padding: 1em;
-      margin-bottom: 1em;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-    .hidden {
-      display: none;
+    .contact-form {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #1a1a1a;
+      color: white;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
-  <div id="admin-login">
-    <form id="admin-form" onsubmit="return checkCode();">
-      <input type="password" id="admin-code" placeholder="Admin Code eingeben" />
-      <input type="submit" value="Login" />
+
+<header>
+  <h1>SofortJob24 – Verdiene heute Geld!</h1>
+  <p>Finde kleine Jobs in deiner Nähe oder biete sofortige Hilfe an.</p>
+</header>
+
+<div class="container">
+  <h2>Aktuelle Jobangebote</h2>
+
+  <div class="job-box">
+    <strong>📦 Möbelhilfe in Berlin</strong>
+    <p>2 Stunden Arbeit beim Möbeltragen. 30€ Barzahlung.</p>
+  </div>
+
+  <div class="job-box">
+    <strong>🐶 Hundespaziergang in München</strong>
+    <p>1x täglich für 5 Tage. 10€/Spaziergang.</p>
+  </div>
+
+  <div class="job-box">
+    <strong>💡 Glühbirne tauschen in Köln</strong>
+    <p>Kurzarbeit, 15 Minuten. 15€ sofort nach Erledigung.</p>
+  </div>
+
+  <h2>Du brauchst dringend Geld?</h2>
+  <p>Stelle deine eigene Jobanzeige ein: „Ich mache alles – brauche dringend 20€“.</p>
+
+  <div class="contact-form">
+    <h3>Kontaktformular</h3>
+    <form>
+      <label for="name">Name*</label>
+      <input type="text" id="name" name="name" required/>
+
+      <label for="email">E-Mail*</label>
+      <input type="email" id="email" name="email" required/>
+
+      <label for="message">Nachricht / Jobangebot*</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+
+      <button type="submit">Absenden</button>
     </form>
   </div>
+</div>
 
-  <header>
-    <h1>SofortJob24 – Schnell Geld verdienen oder Hilfe finden</h1>
-  </header>
+<footer>
+  &copy; 2025 SofortJob24 – Alle Rechte vorbehalten
+</footer>
 
-  <div class="container">
-    <div class="job-card">
-      <h3>Ich brauche heute Hilfe beim Umzug</h3>
-      <p>Ort: Berlin</p>
-      <p>Zeit: Heute um 17:00 Uhr</p>
-      <p>Bezahlung: 40€ bar</p>
-    </div>
-
-    <div class="job-card">
-      <h3>Ich mache alles – brauche heute dringend 20€</h3>
-      <p>Ort: Köln</p>
-      <p>Zeit: Flexibel</p>
-      <p>Kontakt nur für registrierte Benutzer</p>
-    </div>
-
-    <div id="admin-content" class="hidden">
-      <hr />
-      <h2>Admin-Bereich</h2>
-      <p>Kontakt: sofortjob24@support.de</p>
-      <p>Telefon: +49 123 456789</p>
-      <p>Verfügbare Dienste: 24/7</p>
-    </div>
-  </div>
-
-  <script>
-    function checkCode() {
-      const code = document.getElementById("admin-code").value;
-      if (code === "74254") {
-        document.getElementById("admin-content").classList.remove("hidden");
-        alert("Admin-Zugang erfolgreich aktiviert.");
-      } else {
-        alert("Falscher Code.");
-      }
-      return false;
-    }
-  </script>
 </body>
 </html>
