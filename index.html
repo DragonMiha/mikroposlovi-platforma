@@ -6,88 +6,114 @@
   <title>SofortJob24</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      background-color: #e6f2ff;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #f0f8ff;
+      transform: scale(0.6); /* Smanjeno 60% */
+      transform-origin: top left;
     }
-    h2 {
-      font-size: 18px;
-      text-align: center;
-      color: #003366;
-      margin-top: 10px;
-    }
+
     .container {
       display: flex;
-      justify-content: space-around;
       flex-wrap: wrap;
       padding: 20px;
+      box-sizing: border-box;
     }
-    .box {
-      border: 2px solid #003366;
-      border-radius: 10px;
-      padding: 20px;
-      width: 300px;
-      background-color: #ffffff;
+
+    .block {
+      border: 2px solid #1e90ff;
+      border-radius: 12px;
+      background-color: white;
       box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+      padding: 20px;
       margin: 10px;
+      flex: 1 1 45%;
+      min-width: 300px;
     }
-    .button-grid {
+
+    h2 {
+      font-size: 24px;
+      color: #1e90ff;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .buttons {
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
       gap: 10px;
       margin-top: 10px;
     }
-    button {
-      padding: 10px;
+
+    .buttons button {
+      padding: 8px 14px;
       font-size: 14px;
-      background-color: #66b3ff;
+      background-color: #1e90ff;
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
     }
-    button:hover {
-      background-color: #3399ff;
+
+    .buttons button:hover {
+      background-color: #0f6dbe;
     }
-    .city-output {
-      text-align: center;
-      font-weight: bold;
+
+    .login-info {
+      font-size: 12px;
       margin-top: 15px;
-      color: #003366;
+      color: #555;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 12px;
+      margin-top: 40px;
+      color: #aaa;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 <body>
-  <h2>🔎 Hitno tražim pomoć u blizini – Hitno tražim da zaradim u blizini</h2>
   <div class="container">
-    <!-- Lijeva kutija -->
-    <div class="box">
-      <div class="button-grid">
-        <button onclick="selectCity('Berlin', 'leftOutput')">Berlin</button>
-        <button onclick="selectCity('Hamburg', 'leftOutput')">Hamburg</button>
-        <button onclick="selectCity('München', 'leftOutput')">München</button>
-        <button onclick="selectCity('Frankfurt', 'leftOutput')">Frankfurt</button>
+    <!-- Lijevi blok -->
+    <div class="block">
+      <h2>SOFORTJOB24 – Bliži poslovi za hitnu zaradu</h2>
+      <p>Ovdje možeš pronaći ili ponuditi posao koji se može obaviti odmah, u istom danu. Pomoć u kući, nošenje stvari, čuvanje kućnih ljubimaca i još mnogo toga!</p>
+      <div class="buttons">
+        <button>Berlin</button>
+        <button>Hamburg</button>
+        <button>München</button>
+        <button>Frankfurt</button>
       </div>
-      <div id="leftOutput" class="city-output"></div>
+      <div class="login-info">
+        *Admin pristup putem sigurnog PIN-a (samo za vlasnika stranice).
+      </div>
     </div>
 
-    <!-- Desna kutija -->
-    <div class="box">
-      <div class="button-grid">
-        <button onclick="selectCity('Berlin', 'rightOutput')">Berlin</button>
-        <button onclick="selectCity('Hamburg', 'rightOutput')">Hamburg</button>
-        <button onclick="selectCity('München', 'rightOutput')">München</button>
-        <button onclick="selectCity('Frankfurt', 'rightOutput')">Frankfurt</button>
+    <!-- Desni blok -->
+    <div class="block">
+      <h2>Objavi ponudu</h2>
+      <p>Hitno ti treba novac? Objavi oglas tipa "Radim bilo što za 20€ danas!" i poveži se odmah s ljudima u tvojoj blizini.</p>
+      <div class="buttons">
+        <button>Objavi posao</button>
+        <button>Pronađi pomoć</button>
       </div>
-      <div id="rightOutput" class="city-output"></div>
     </div>
   </div>
 
-  <script>
-    function selectCity(city, outputId) {
-      document.getElementById(outputId).textContent = city;
-    }
-  </script>
+  <footer>
+    &copy; 2025 SofortJob24 – Sva prava pridržana.
+  </footer>
 </body>
 </html>
