@@ -1,99 +1,53 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SofortJob24 – Mikrojobs in deiner Nähe</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f2f2f2;
-    }
-    header {
-      background-color: #1e90ff;
-      color: white;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    h1 {
-      font-size: 22px;
-      margin: 0;
-    }
-    #clock {
-      font-size: 18px;
-      margin-left: auto;
-    }
-    .subtext {
-      text-align: center;
-      font-size: 16px;
-      margin: 15px;
-      color: #333;
-    }
-    .login-box {
-      text-align: center;
-      margin: 20px;
-    }
-    .login-box input {
-      padding: 8px;
-      margin: 5px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    .login-box button {
-      padding: 8px 16px;
-      background-color: #1e90ff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MikroPoslovi - SofortJob24</title>
+    <meta name="description" content="Finde oder biete Sofortjobs in deiner Nähe – schnell, einfach und sicher bezahlt.">
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="app.js"></script>
+    <style>
+      .watch-face {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: Arial, sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+        color: #000000;
+        background-color: #ffffffbb;
+        padding: 8px 12px;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>MikroPoslovi – SofortJob24</h1>
+      <p>Finde oder biete kurzfristige Jobs in deiner Nähe</p>
+    </header>
 
-<header>
-  <h1>SofortJob24 – Mikrojobs in deiner Nähe</h1>
-  <div id="clock"></div>
-</header>
+    <!-- Dodani sat -->
+    <div class="watch-face">11:55</div>
 
-<div class="subtext">
-  <strong>Für alle, die dringend Hilfe brauchen und für alle, die dringend Geld verdienen müssen.</strong>
-</div>
+    <main>
+      <section>
+        <h2>Arbeiten in der Nähe</h2>
+        <p>Finde spontane Jobs in deiner Umgebung – heute erledigen, heute bezahlt!</p>
+      </section>
 
-<div class="login-box">
-  <h3>Admin Zugang</h3>
-  <input type="password" id="adminCode" placeholder="Admin-Code">
-  <input type="email" id="emailInput" placeholder="E-Mail-Adresse">
-  <button onclick="checkAccess()">Einloggen</button>
-  <p id="loginMessage" style="color:red; margin-top:10px;"></p>
-</div>
+      <section>
+        <h2>Schnelle Hilfe gesucht?</h2>
+        <p>Poste deinen Auftrag, und jemand in der Nähe hilft dir sofort.</p>
+      </section>
+    </main>
 
-<script>
-  function updateClock() {
-    const now = new Date();
-    document.getElementById('clock').innerText =
-      now.toLocaleTimeString('de-DE');
-  }
-  setInterval(updateClock, 1000);
-  updateClock();
-
-  function checkAccess() {
-    const code = document.getElementById('adminCode').value;
-    const email = document.getElementById('emailInput').value;
-    const validCode = "74254";
-    const validEmail = "drmiha74@web.de";
-    if (code === validCode || email === validEmail) {
-      window.location.href = "admin.html"; // zamijeni s pravom admin stranicom
-    } else {
-      document.getElementById('loginMessage').innerText = "Falscher Code oder E-Mail-Adresse!";
-    }
-  }
-</script>
-
-</body>
+    <footer>
+      <p>&copy; 2025 SofortJob24. Alle Rechte vorbehalten.</p>
+    </footer>
+  </body>
 </html>
