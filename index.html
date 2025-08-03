@@ -1,124 +1,91 @@
-<!DOCTYPE html>
-<html lang="de">
+
+<!DOCTYPE html><html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="SofortJob24 – Verdienen Sie sofort Geld in Ihrer Nähe mit kleinen Jobs.">
-  <meta name="keywords" content="SofortJob, Minijob, Nebenjob, Geld verdienen, Jobs in der Nähe">
-  <meta name="author" content="SofortJob24 Team">
-  <title>SofortJob24 – Schnelle Jobs in deiner Nähe</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Finde oder biete Sofortjobs in Berlin, Hamburg, München und Frankfurt. Hilfe und Verdienst noch heute!">
+  <title>SofortJob24 – Hilfe und Verdienst noch heute!</title>
   <style>
     body {
-      font-family: 'Roboto', sans-serif;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f8f9fa;
+      background-color: #f2f2f2;
     }
     header {
-      background-color: #1a1a1a;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #003366;
       color: white;
+      padding: 10px 20px;
+    }
+    header img {
+      height: 50px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+    h2 {
+      margin-top: 5px;
+      font-size: 1.2rem;
+      color: #ffcc00;
+    }
+    .admin {
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+    .section {
       padding: 20px;
-      text-align: center;
     }
-    .container {
-      padding: 20px;
-      max-width: 800px;
-      margin: auto;
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
     }
-    h1, h2 {
-      color: #1a1a1a;
-    }
-    .job-box {
+    .box {
       background-color: white;
-      border: 1px solid #ddd;
       padding: 15px;
-      margin: 15px 0;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    .contact-form {
-      background-color: #ffffff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    button {
-      background-color: #007bff;
-      color: white;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #0056b3;
     }
     footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #1a1a1a;
+      background-color: #003366;
       color: white;
-      margin-top: 40px;
+      padding: 10px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    .gps {
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
+  <header>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Analog_clock_icon.svg/512px-Analog_clock_icon.svg.png" alt="Logo" />
+    <div>
+      <h1>SofortJob24 – Hilfe und Verdienst noch heute!</h1>
+      <h2>Ich brauche heute noch Hilfe – Ich will heute noch Geld verdienen!</h2>
+      <div class="admin">Admin-Zugang: Code 7425 (verknüpft mit dragonmiha9@gmail.com)</div>
+    </div>
+  </header>
+  <div class="section">
+    <div class="grid">
+      <div class="box">
+        <h3>Ich biete einen Minijob</h3>
+        <p>Hier kannst du schnell jemanden finden, der dir heute noch helfen kann.</p>
+      </div>
+      <div class="box">
+        <h3>Ich suche einen Job</h3>
+        <p>Trage dein Angebot ein und erhalte heute noch einen bezahlten Auftrag!</p>
+      </div>
+    </div><div class="box gps">
+  <h3>Suche nach Standort</h3>
+  <label for="stadt">Wähle eine Stadt:</label>
+  <select id="stadt">
+    <option value="Berlin">Berlin</option>
+    <option value="Hamburg">Hamburg</option>
+    <option value="München">München</option
 
-<header>
-  <h1>SofortJob24 – Verdiene heute Geld!</h1>
-  <p>Finde kleine Jobs in deiner Nähe oder biete sofortige Hilfe an.</p>
-</header>
-
-<div class="container">
-  <h2>Aktuelle Jobangebote</h2>
-
-  <div class="job-box">
-    <strong>📦 Möbelhilfe in Berlin</strong>
-    <p>2 Stunden Arbeit beim Möbeltragen. 30€ Barzahlung.</p>
-  </div>
-
-  <div class="job-box">
-    <strong>🐶 Hundespaziergang in München</strong>
-    <p>1x täglich für 5 Tage. 10€/Spaziergang.</p>
-  </div>
-
-  <div class="job-box">
-    <strong>💡 Glühbirne tauschen in Köln</strong>
-    <p>Kurzarbeit, 15 Minuten. 15€ sofort nach Erledigung.</p>
-  </div>
-
-  <h2>Du brauchst dringend Geld?</h2>
-  <p>Stelle deine eigene Jobanzeige ein: „Ich mache alles – brauche dringend 20€“.</p>
-
-  <div class="contact-form">
-    <h3>Kontaktformular</h3>
-    <form>
-      <label for="name">Name*</label>
-      <input type="text" id="name" name="name" required/>
-
-      <label for="email">E-Mail*</label>
-      <input type="email" id="email" name="email" required/>
-
-      <label for="message">Nachricht / Jobangebot*</label>
-      <textarea id="message" name="message" rows="4" required></textarea>
-
-      <button type="submit">Absenden</button>
-    </form>
-  </div>
-</div>
-
-<footer>
-  &copy; 2025 SofortJob24 – Alle Rechte vorbehalten
-</footer>
-
-</body>
-</html>
