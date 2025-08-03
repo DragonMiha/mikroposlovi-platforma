@@ -2,146 +2,104 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Finde Sofortjobs oder biete Hilfe in deiner Stadt – schnell, einfach und sicher.">
-  <title>SofortJob24 - Sofortarbeit in deiner Nähe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SofortJob24 – Stadtwahl</title>
   <style>
     body {
       font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
       margin: 0;
-      padding: 0;
-      background: #f0f2f5;
-    }
-    header {
-      background: #003366;
-      color: white;
       padding: 1rem;
+    }
+
+    .container {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
-      align-items: center;
+      gap: 1rem;
     }
-    header h1 {
-      margin: 0;
-      font-size: 1.5rem;
-    }
-    .login-button {
-      background: #0055aa;
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
+
+    .box {
+      background-color: white;
+      padding: 1rem;
       border-radius: 8px;
-      cursor: pointer;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      flex: 1 1 45%;
+      min-width: 300px;
     }
-    main {
-      padding: 1rem;
-    }
-    .job-box {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      padding: 1rem;
+
+    .city-buttons {
       margin-bottom: 1rem;
     }
-    .city-selector {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin: 1rem 0;
-      flex-wrap: wrap;
-    }
-    .city-selector button {
+
+    .city-buttons button {
+      margin: 0.3rem;
       padding: 0.5rem 1rem;
-      background: #007bff;
+      background-color: #005bbb;
       color: white;
       border: none;
-      border-radius: 6px;
+      border-radius: 5px;
       cursor: pointer;
     }
-    footer {
+
+    .result {
+      font-weight: bold;
+      color: #333;
+      font-size: 1.2rem;
+      padding: 0.5rem;
+      background-color: #e0e0e0;
+      border-radius: 5px;
       text-align: center;
-      font-size: 0.9rem;
-      padding: 1rem;
-      background: #eee;
-      margin-top: 2rem;
     }
-    .contact-link {
-      display: block;
-      margin-top: 0.5rem;
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>SofortJob24</h1>
-    <button class="login-button" onclick="showAdminLogin()">Login</button>
-  </header>
 
-  <main>
-    <section class="city-selector">
-      <button onclick="filterByCity('Berlin')">Berlin</button>
-      <button onclick="filterByCity('Hamburg')">Hamburg</button>
-      <button onclick="filterByCity('München')">München</button>
-      <button onclick="filterByCity('Frankfurt')">Frankfurt</button>
-    </section>
+  <h1 style="text-align:center;">SofortJob24 – Stadtwahl</h1>
 
-    <section id="jobs">
-      <div class="job-box" data-city="Berlin">
-        <h3>Hilfe beim Umzug gesucht</h3>
-        <p>Ort: Berlin | Bezahlung: 40€</p>
-        <p>Beschreibung: Tragehilfe für 2 Stunden benötigt, sofort!</p>
+  <div class="container">
+    
+    <!-- Lijeva strana -->
+    <div class="box">
+      <h3>Wähle Stadt (links)</h3>
+      <div class="city-buttons">
+        <button onclick="selectCity('Berlin', 'left')">Berlin</button>
+        <button onclick="selectCity('Hamburg', 'left')">Hamburg</button>
+        <button onclick="selectCity('München', 'left')">München</button>
+        <button onclick="selectCity('Frankfurt', 'left')">Frankfurt</button>
       </div>
-      <div class="job-box" data-city="Hamburg">
-        <h3>Glühbirne wechseln</h3>
-        <p>Ort: Hamburg | Bezahlung: 10€</p>
-        <p>Beschreibung: Kleiner Job für 5 Minuten, dringend!</p>
-      </div>
-      <div class="job-box" data-city="München">
-        <h3>Hund ausführen</h3>
-        <p>Ort: München | Bezahlung: 15€</p>
-        <p>Beschreibung: 30 Minuten Spaziergang mit Labrador.</p>
-      </div>
-      <div class="job-box" data-city="Frankfurt">
-        <h3>Ich mache alles – brauche 20€ heute</h3>
-        <p>Ort: Frankfurt | Bezahlung: nach Vereinbarung</p>
-        <p>Beschreibung: Biete jede Hilfe, dringend Geld benötigt.</p>
-      </div>
-    </section>
-  </main>
+      <div id="left-result" class="result">Keine Auswahl</div>
+    </div>
 
-  <footer>
-    © 2025 SofortJob24<br />
-    Kontakt für Sponsoren & Werbung:  
-    <a href="mailto:.de</a>
-  </footer>
+    <!-- Desna strana -->
+    <div class="box">
+      <h3>Wähle Stadt (rechts)</h3>
+      <div class="city-buttons">
+        <button onclick="selectCity('Berlin', 'right')">Berlin</button>
+        <button onclick="selectCity('Hamburg', 'right')">Hamburg</button>
+        <button onclick="selectCity('München', 'right')">München</button>
+        <button onclick="selectCity('Frankfurt', 'right')">Frankfurt</button>
+      </div>
+      <div id="right-result" class="result">Keine Auswahl</div>
+    </div>
 
-  <!-- Admin Login Modal -->
-  <div id="adminLogin" style="display:none; text-align:center; margin-top:20px;">
-    <p>Bitte geben Sie Ihren Zugangscode ein:</p>
-    <input type="password" id="adminCode" placeholder="Code eingeben" style="padding:8px; border-radius:6px; border:1px solid #ccc;">
-    <button onclick="checkCode()" style="margin-left:10px; padding:8px 16px; background-color:#28a745; color:white; border:none; border-radius:6px;">Einloggen</button>
-    <p id="loginMessage" style="color:red; margin-top:10px;"></p>
   </div>
 
   <script>
-    function filterByCity(city) {
-      const jobs = document.querySelectorAll('.job-box');
-      jobs.forEach(job => {
-        job.style.display = job.dataset.city === city ? 'block' : 'none';
-      });
-    }
-
-    function showAdminLogin() {
-      document.getElementById("adminLogin").style.display = "block";
-    }
-
-    function checkCode() {
-      const code = document.getElementById("adminCode").value;
-      if (code === "74254") {
-        window.location.href = "admin-panel.html"; // Admin panel otvara se samo kad je točno
-      } else {
-        document.getElementById("loginMessage").textContent = "Falscher Code. Zugriff verweigert.";
+    function selectCity(city, side) {
+      if (side === 'left') {
+        document.getElementById('left-result').textContent = city;
+      } else if (side === 'right') {
+        document.getElementById('right-result').textContent = city;
       }
     }
   </script>
+
 </body>
 </html>
