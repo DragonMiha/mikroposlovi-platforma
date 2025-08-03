@@ -1,104 +1,171 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SofortJob24 – Schnell Geld verdienen oder Hilfe finden</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SofortJob24</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f8ff;
+      font-family: sans-serif;
       margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #007acc;
-      color: white;
-      padding: 10px;
-      text-align: center;
-      font-size: 20px;
-    }
-    .container {
+      background: #f4f4f4;
+      color: #333;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 10px;
-      gap: 20px;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
     }
-    .box {
-      background-color: white;
-      border: 2px solid #007acc;
-      border-radius: 10px;
-      padding: 15px;
-      width: 90%;
+
+    h1 {
+      text-align: center;
+      color: #003366;
+    }
+
+    .cities {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      width: 100%;
       max-width: 400px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-top: 20px;
     }
-    h2 {
-      font-size: 18px;
-      color: #007acc;
-      text-align: center;
-      margin-bottom: 10px;
+
+    .city-btn {
+      background-color: #0066cc;
+      color: white;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
     }
-    .city-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 8px;
+
+    .city-btn:hover {
+      background-color: #004999;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -30%);
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      width: 90%;
+      max-width: 350px;
+      z-index: 9999;
+    }
+
+    .popup textarea {
+      width: 100%;
+      height: 80px;
       margin-top: 10px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
     }
-    .city-buttons button {
-      flex: 1 1 45%;
-      background-color: #e0f0ff;
-      border: 1px solid #007acc;
-      border-radius: 6px;
-      padding: 8px;
-      color: #007acc;
-      font-size: 14px;
+
+    .popup button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      background: #0066cc;
+      color: white;
+      border: none;
+      border-radius: 8px;
       cursor: pointer;
     }
-    .city-buttons button:hover {
-      background-color: #b3e0ff;
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 9998;
     }
-    @media (min-width: 768px) {
-      .container {
-        flex-wrap: nowrap;
-      }
-      .box {
-        width: 40%;
-      }
+
+    .investor-contact {
+      margin-top: 40px;
+      background: #e0f2e9;
+      padding: 15px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .investor-contact button {
+      background: #004d00;
+      color: white;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    /* Skriveni email u HTML-u */
+    .hidden-email {
+      display: none;
     }
   </style>
 </head>
 <body>
+  <h1>SofortJob24</h1>
 
-  <header>SofortJob24 – Schnell Geld verdienen oder Hilfe finden</header>
-
-  <div class="container">
-    <!-- Box za osobe koje traže pomoć -->
-    <div class="box">
-      <h2>Ich brauche sofort Hilfe in meiner Nähe</h2>
-      <p>Poste eine Anfrage für kleine Aufgaben in deiner Umgebung – jemand wird sich melden!</p>
-      <div class="city-buttons">
-        <button>Berlin</button>
-        <button>Hamburg</button>
-        <button>München</button>
-        <button>Frankfurt</button>
-      </div>
-    </div>
-
-    <!-- Box za osobe koje žele zaraditi odmah -->
-    <div class="box">
-      <h2>Ich will sofort in meiner Nähe Geld verdienen</h2>
-      <p>Finde kleine Jobs in deiner Umgebung und verdiene heute noch Geld!</p>
-      <div class="city-buttons">
-        <button>Berlin</button>
-        <button>Hamburg</button>
-        <button>München</button>
-        <button>Frankfurt</button>
-      </div>
-    </div>
+  <div class="cities">
+    <button class="city-btn" onclick="openPopup('Berlin')">Berlin</button>
+    <button class="city-btn" onclick="openPopup('Hamburg')">Hamburg</button>
+    <button class="city-btn" onclick="openPopup('München')">München</button>
+    <button class="city-btn" onclick="openPopup('Frankfurt')">Frankfurt</button>
   </div>
 
+  <div class="popup" id="popup">
+    <h3 id="popup-city"></h3>
+    <label for="jobtext">Was brauchst du?</label>
+    <textarea id="jobtext" placeholder="z.B. Hilfe beim Tragen..."></textarea>
+    <button onclick="submitJob()">Absenden</button>
+  </div>
+
+  <div class="overlay" onclick="closePopup()"></div>
+
+  <div class="investor-contact">
+    <p>Für Investoren & Werbeanfragen:</p>
+    <button onclick="contactInvestors()">Kontakt</button>
+  </div>
+
+  <div class="hidden-email" id="hidden-email">drmiha74@web.de</div>
+
+  <script>
+    function openPopup(city) {
+      document.getElementById('popup-city').textContent = city;
+      document.getElementById('popup').style.display = 'block';
+      document.querySelector('.overlay').style.display = 'block';
+    }
+
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+      document.querySelector('.overlay').style.display = 'none';
+    }
+
+    function submitJob() {
+      const jobText = document.getElementById('jobtext').value;
+      if (jobText.trim() !== '') {
+        alert('Dein Auftrag wurde übermittelt!');
+        closePopup();
+      } else {
+        alert('Bitte beschreibe kurz, was du brauchst.');
+      }
+    }
+
+    function contactInvestors() {
+      const email = document.getElementById('hidden-email').textContent;
+      alert("Kontaktanfragen werden direkt weitergeleitet. Danke!");
+      // ili se može dodati: window.location.href = `mailto:${email}`;
+    }
+  </script>
 </body>
 </html>
