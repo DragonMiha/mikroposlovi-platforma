@@ -1,91 +1,75 @@
-
 <!DOCTYPE html><html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Finde oder biete Sofortjobs in Berlin, Hamburg, München und Frankfurt. Hilfe und Verdienst noch heute!">
-  <title>SofortJob24 – Hilfe und Verdienst noch heute!</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SofortJob24 - Soforthilfe oder Sofortjob in deiner Nähe. Finde oder biete Hilfe jetzt in Berlin, Hamburg, München, Frankfurt!">
+  <title>SofortJob24 - Hilfe oder Job sofort in deiner Nähe</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #1a1a1a;
     }
     header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background-color: #003366;
+      background-color: #007BFF;
       color: white;
-      padding: 10px 20px;
-    }
-    header img {
-      height: 50px;
-    }
-    h1 {
-      margin: 0;
-      font-size: 1.8rem;
-    }
-    h2 {
-      margin-top: 5px;
-      font-size: 1.2rem;
-      color: #ffcc00;
-    }
-    .admin {
-      font-size: 0.9rem;
-      color: #ccc;
-    }
-    .section {
-      padding: 20px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-    .box {
-      background-color: white;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    footer {
-      background-color: #003366;
-      color: white;
-      padding: 10px;
+      padding: 1rem;
       text-align: center;
-      font-size: 0.9rem;
     }
-    .gps {
-      margin-top: 10px;
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    header p {
+      margin: 0.5rem 0 0 0;
+      font-size: 1rem;
+    }
+    .city-section {
+      padding: 1.5rem;
+    }
+    .city-title {
+      font-size: 1.5rem;
+      color: #007BFF;
+      margin-bottom: 1rem;
+    }
+    .city {
+      margin-bottom: 2rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 1rem;
+    }
+    .btn-auction {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .btn-auction:hover {
+      background-color: #0056b3;
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Analog_clock_icon.svg/512px-Analog_clock_icon.svg.png" alt="Logo" />
-    <div>
-      <h1>SofortJob24 – Hilfe und Verdienst noch heute!</h1>
-      <h2>Ich brauche heute noch Hilfe – Ich will heute noch Geld verdienen!</h2>
-      <div class="admin">Admin-Zugang: Code 7425 (verknüpft mit dragonmiha9@gmail.com)</div>
-    </div>
+    <h1>SofortJob24</h1>
+    <p>Brauche dringend Hilfe - brauche dringend Geld</p>
   </header>
-  <div class="section">
-    <div class="grid">
-      <div class="box">
-        <h3>Ich biete einen Minijob</h3>
-        <p>Hier kannst du schnell jemanden finden, der dir heute noch helfen kann.</p>
-      </div>
-      <div class="box">
-        <h3>Ich suche einen Job</h3>
-        <p>Trage dein Angebot ein und erhalte heute noch einen bezahlten Auftrag!</p>
-      </div>
-    </div><div class="box gps">
-  <h3>Suche nach Standort</h3>
-  <label for="stadt">Wähle eine Stadt:</label>
-  <select id="stadt">
-    <option value="Berlin">Berlin</option>
-    <option value="Hamburg">Hamburg</option>
-    <option value="München">München</option
-
+  <main class="city-section">
+    <section class="city">
+      <div class="city-title">Berlin</div>
+      <p>Finde oder biete Soforthilfe in Berlin</p>
+      <a href="#" class="btn-auction">Auktion öffnen</a>
+    </section>
+    <section class="city">
+      <div class="city-title">Hamburg</div>
+      <p>Finde oder biete Soforthilfe in Hamburg</p>
+      <a href="#" class="btn-auction">Auktion öffnen</a>
+    </section>
+    <section class="city">
+      <div class="city-title">M
