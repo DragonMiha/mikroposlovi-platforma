@@ -13,39 +13,43 @@
     header {
       background-color: #007BFF;
       color: white;
-      padding: 1rem;
+      padding: 2rem 1rem;
       text-align: center;
+      font-size: 1.8rem;
+      font-weight: bold;
     }
     main {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      padding: 1.5rem;
     }
-    .left, .right {
+    .card {
       background-color: white;
       padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
     h2 {
       margin-top: 0;
-      color: #003366;
-      text-align: center;
+      color: #000;
+      text-align: left;
+      font-size: 1.4rem;
+      font-weight: bold;
     }
     .button-group {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 0.7rem;
       margin-top: 1rem;
-      justify-content: center;
     }
     .button-group button {
-      padding: 0.6rem 1rem;
+      padding: 0.6rem 1.2rem;
       border: none;
-      border-radius: 8px;
+      border-radius: 12px;
       background-color: #007BFF;
       color: white;
+      font-size: 1rem;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
@@ -53,42 +57,45 @@
       background-color: #0056b3;
     }
     .output {
-      margin-top: 1rem;
+      margin-top: 1.2rem;
       font-weight: bold;
-      text-align: center;
-      color: #003366;
+      text-align: left;
+      font-size: 1.1rem;
+      color: #000;
     }
-    @media (max-width: 768px) {
+    @media (min-width: 768px) {
       main {
-        grid-template-columns: 1fr;
+        flex-direction: row;
+        justify-content: center;
+      }
+      .card {
+        width: 45%;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>SofortJob24 - Stadtwahl</h1>
-  </header>
+  <header>SofortJob24 -<br>Stadtwahl</header>
 
   <main>
-    <div class="left">
+    <div class="card">
       <h2>Ich suche Hilfe in:</h2>
       <div class="button-group">
-        <button onclick="document.getElementById('help-output').textContent = 'Berlin'">Berlin</button>
-        <button onclick="document.getElementById('help-output').textContent = 'Hamburg'">Hamburg</button>
-        <button onclick="document.getElementById('help-output').textContent = 'München'">München</button>
-        <button onclick="document.getElementById('help-output').textContent = 'Frankfurt'">Frankfurt</button>
+        <button onclick="document.getElementById('help-output').textContent = 'Ich suche Hilfe in Berlin'">Berlin</button>
+        <button onclick="document.getElementById('help-output').textContent = 'Ich suche Hilfe in Hamburg'">Hamburg</button>
+        <button onclick="document.getElementById('help-output').textContent = 'Ich suche Hilfe in München'">München</button>
+        <button onclick="document.getElementById('help-output').textContent = 'Ich suche Hilfe in Frankfurt'">Frankfurt</button>
       </div>
       <div id="help-output" class="output"></div>
     </div>
 
-    <div class="right">
+    <div class="card">
       <h2>Ich suche Arbeit in:</h2>
       <div class="button-group">
-        <button onclick="document.getElementById('work-output').textContent = 'Berlin'">Berlin</button>
-        <button onclick="document.getElementById('work-output').textContent = 'Hamburg'">Hamburg</button>
-        <button onclick="document.getElementById('work-output').textContent = 'München'">München</button>
-        <button onclick="document.getElementById('work-output').textContent = 'Frankfurt'">Frankfurt</button>
+        <button onclick="document.getElementById('work-output').textContent = 'Ich suche Arbeit in Berlin'">Berlin</button>
+        <button onclick="document.getElementById('work-output').textContent = 'Ich suche Arbeit in Hamburg'">Hamburg</button>
+        <button onclick="document.getElementById('work-output').textContent = 'Ich suche Arbeit in München'">München</button>
+        <button onclick="document.getElementById('work-output').textContent = 'Ich suche Arbeit in Frankfurt'">Frankfurt</button>
       </div>
       <div id="work-output" class="output"></div>
     </div>
